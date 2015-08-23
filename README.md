@@ -12,7 +12,9 @@ This image extends the 32-bit Ubuntu core with the [nginx web server](http://ngi
 
 The latest build of this image can readily be pulled from Docker Hub:
 
-    $ docker pull f69m/ubuntu32-nginx
+```console
+$ docker pull f69m/ubuntu32-nginx
+```
 
 ### Usage
 
@@ -20,22 +22,25 @@ This image is very similar to the [official nginx Docker image](https://hub.dock
 
 #### Serve static content from a host directory
 
-    $ docker run -d --name nginx -v /some/content:/usr/share/nginx/html:ro f69m/ubuntu32-nginx
+```console
+$ docker run -d --name nginx -v /some/content:/usr/share/nginx/html:ro f69m/ubuntu32-nginx
+```
 
 #### Create a derived image with static content
 
 The static contents can be added to a new image using and building a simple `Dockerfile`:
 
-    FROM f69m/ubuntu32-nginx
-    COPY static-html-directory /usr/share/nginx/html
+```dockerfile
+FROM f69m/ubuntu32-nginx
+COPY static-html-directory /usr/share/nginx/html
+```
 
-From the directory containing the `Dockerfile` build the new image with:
+From the directory containing the `Dockerfile` build and run the new image like:
 
-    $ docker build -t nginx-static .
-
-Then run it like this:
-
-    $ docker run -d --name nginx nginx-static
+```console
+$ docker build -t nginx-static .
+$ docker run -d --name nginx nginx-static
+```
 
 ### Contribute
 
